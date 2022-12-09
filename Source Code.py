@@ -1,6 +1,5 @@
 import PySimpleGUI as sg
 
-
 def gui():
     sg.theme('GrayGrayGray')
     layout = [
@@ -10,9 +9,12 @@ def gui():
         [sg.Text("\n\n\n\n\n\n           "), sg.Submit(size=(8,2)),sg.Cancel(size=(8,2))]
     ]
     window=sg.Window("BMI Calculator",layout,size = (300,300))
-    event, values = window.read()
-    window.close()
-    return out(values)
+    while True:
+        event, values = window.read()
+        window.close()
+        if event==sg.WIN_CLOSED or event=="Cancel":
+            break;
+        return out(values)
 
 
 def out(value):
